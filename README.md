@@ -1,10 +1,10 @@
 == README
 
-#ChatSpace
+# ChatSpace
 
-##Database design
+## Database design
 
-###users table
+### users table
 
 | column | type | null |
 |:------:|:----:|:----:|
@@ -14,14 +14,14 @@
 |password|string|false |
 |group_id|integer|     |
 
-###groups table
+### groups table
 
 | column | type | null |
 |:------:|:----:|:----:|
 |id      |integer|     |
 |name    |string|false |
 
-###messages table
+### messages table
 
 | column | type | null |
 |:------:|:----:|:----:|
@@ -32,19 +32,19 @@
 |group_id|integer|false|
 
 
-##association
+## association
 
-#user
+# user
 
  - belongs_to :group
  - has_many :messages
 
-#group
+# group
 
 - has_many :users
 - has_many :messages
 
-#message
+# message
 
 - belongs_to :user
 - belongs_to :group
