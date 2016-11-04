@@ -8,7 +8,6 @@
 
 | column | type | null |
 |:------:|:----:|:----:|
-|id      |integer|     |
 |name    |string|false |
 |email   |string|false |
 |password|string|false |
@@ -18,7 +17,6 @@
 
 | column | type | null |
 |:------:|:----:|:----:|
-|id      |integer|     |
 |name    |string|false |
 
 ### messages table
@@ -30,6 +28,14 @@
 |created_at|datetime|  |
 |user_id |integer|false|
 |group_id|integer|false|
+
+## group_users table
+
+| column | type | null |
+|:------:|:----:|:----:|
+|user_id |integer|false|
+|group_id |integer|false|
+
 
 
 ## association
