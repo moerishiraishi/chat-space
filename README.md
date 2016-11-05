@@ -29,12 +29,12 @@
 |user_id |integer|false|
 |group_id|integer|false|
 
-## group_users table
+## groups_users table
 
 | column | type | null |
 |:------:|:----:|:----:|
-|user_id |integer|false|
-|group_id |integer|false|
+|user_id |references|false|
+|group_id |references|false|
 
 
 
@@ -42,12 +42,12 @@
 
 # user
 
- - belongs_to :group
+ - has_many :groups, through: :groups_users
  - has_many :messages
 
 # group
 
-- has_many :users
+- has_many :users, through: :groups_users
 - has_many :messages
 
 # message
