@@ -11,7 +11,7 @@
 |name    |string|false |
 |email   |string|false |
 |password|string|false |
-|group_id|integer|     |
+|group_id|references|  |
 
 ### groups table
 
@@ -26,8 +26,8 @@
 |body    |text  |false |
 |image   |string|      |
 |created_at|datetime|  |
-|user_id |integer|false|
-|group_id|integer|false|
+|user_id |references|false|
+|group_id|references|false|
 
 ## groups_users table
 
