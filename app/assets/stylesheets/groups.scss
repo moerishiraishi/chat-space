@@ -1,3 +1,252 @@
-// Place all the styles related to the groups controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.layout-notification {
+  flex: 1;
+}
+
+.chat {
+  min-width: 980px;
+  height: 100%;
+}
+
+
+.chat-side {
+  float: left;
+  width: 300px;
+  height: 100%;
+  background-color: #2f3e51;
+}
+
+
+.chat-user {
+  padding: 20px;
+  color: #fff;
+  background-color: #253141;
+
+  h5 {
+    float: left;
+    line-height: 60px;
+    letter-spacing: 2px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  &__actions {
+    float: right;
+  }
+
+  &__action {
+    display: inline-block;
+    margin: 15px 0 15px 3px;
+    line-height: 28px;
+    color: #fff;
+    font-size: 20px;
+  }
+}
+
+.fa-pencil-square-o, .fa-cog {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+.chat-groups {
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  list-style: none;
+}
+
+.chat-group {
+  box-sizing: border-box;
+
+  &__link {
+    display: block;
+    padding: 20px 20px;
+    color: #fff;
+  }
+
+  &__name {
+    display: inline-block;
+    font-size: 15px;
+    margin-bottom: 5px;
+  }
+
+  &__message {
+    font-size: 11px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+
+.chat-main {
+  float: left;
+  position: relative;
+  width: calc(100% - 300px);
+  height: 100%;
+}
+
+.chat-header {
+    padding-right: 40px;
+    padding-left: 40px;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+
+  &--left {
+    float: left;
+  }
+
+  h2 {
+    margin-top: 20px;
+    line-height: 50px;
+    letter-spacing: 2px;
+    color: #333;
+    font-size: 20px;
+    font-weight: 400;
+  }
+
+  &__users {
+    line-height: 20px;
+    color: #999;
+    font-size: 12px;
+  }
+
+  &__user{
+      margin-left: 3px;
+  }
+
+  &--right {
+    float: right;
+  }
+
+  &__edit-btn {
+    display: inline-block;
+    margin: 28px 0;
+    padding-right: 20px;
+    padding-left: 20px;
+    line-height: 40px;
+    color: #38aef0;
+    font-size: 14px;
+    border: 2px solid;
+  }
+}
+
+.chat-body {
+  position: relative;
+  padding: 30px 0;
+  height: calc(100% - 190px);
+  overflow-y: scroll;
+
+  .chat-messages {
+    position: absolute;
+    right: 40px;
+    left: 40px;
+    padding: 0;
+    list-style: none;
+
+    .chat-message {
+      margin-bottom: 40px;
+
+      &__header {
+        line-height: 20px;
+      }
+
+      &_name {
+        float: left;
+        margin-bottom: 10px;
+        font-weight: 600;
+        padding-right: 10px;
+      }
+
+      &_time {
+        float: left;
+        margin-left: 10px;
+        color: #999999;
+        font-size: 12px;
+      }
+
+      &_body {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+.chat-footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 20px 40px;
+  background-color: #ddd;
+
+  &__file {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: inline-block;
+    width: 40px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    cursor: pointer;
+    right: 10px;
+
+    i {
+      display: inline-block;
+      font: normal normal normal 14px/1 FontAwesome;
+      font-size: inherit;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+
+      }
+    }
+
+
+  &__body {
+    float: left;
+    width: calc(100% - 115px);
+    height: 50px;
+    position: relative;
+
+    textarea {
+      width: 100%;
+      height: 50px;
+      padding: 15px 10px;
+      line-height: 20px;
+      border: none;
+      resize: none;
+      display: block;
+    }
+  }
+
+  input {
+    float: left;
+    display: inline-block;
+    width: 100px;
+    margin-left: 15px;
+    line-height: 50px;
+    color: #fff;
+    background-color: #38aef0;
+    text-align: center;
+    border: none;
+    padding: 0;
+  }
+}
+
+.clearfix:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+*,*:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+
+
