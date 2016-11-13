@@ -13,6 +13,7 @@ module ChatSpace
       g.test_framework false
       g.coffee false
       g.assets false
+      g.yml false
     end
 
   end
