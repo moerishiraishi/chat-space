@@ -7,8 +7,14 @@ class GroupsController < ApplicationController
   end
 
   def create
-    Group.create(create_params)
-    redirect_to :root
+    @group = Group.new(create_params)
+    if @group.save
+      flash[:notice] = "グループを作成しました"
+      redirect_to :root
+    else
+      flash[:alert] = "グループを作成できませんでした"
+      redirect_to "/groups/new"
+    end
   end
 
   private
