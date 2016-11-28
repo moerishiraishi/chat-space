@@ -13,11 +13,12 @@ class GroupsController < ApplicationController
       redirect_to :root
     else
       flash[:alert] = "グループを作成できませんでした"
-      redirect_to "/groups/new"
+      redirect_to new_group_path
     end
   end
 
   private
+
   def create_params
     params.require(:group).permit(:name)
   end
