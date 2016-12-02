@@ -17,6 +17,16 @@ class GroupsController < ApplicationController
     end
   end
 
+  def edit
+    @group = Group.find(params[:id])
+  end
+
+  def update
+    group = Group.find(params[:id])
+    if group.user_id == current_user.id
+        group.update(create_params)
+  end
+
   private
 
   def create_params
