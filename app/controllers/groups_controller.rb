@@ -25,6 +25,7 @@ class GroupsController < ApplicationController
     group = Group.find(params[:id])
     if group.user_id == current_user.id
         group.update(create_params)
+    end
   end
 
   private
