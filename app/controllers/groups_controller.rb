@@ -17,6 +17,20 @@ class GroupsController < ApplicationController
     end
   end
 
+  def edit
+    @group = Group.find(params[:id])
+  end
+
+  def update
+    group = Group.find(params[:id])
+    # if group.users.each do |id|
+    #     id == current_user.id
+    #   end
+        group.update(create_params)
+        redirect_to :root
+    end
+  # end
+
   private
 
   def create_params
