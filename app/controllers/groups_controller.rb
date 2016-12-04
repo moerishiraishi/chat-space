@@ -23,17 +23,13 @@ class GroupsController < ApplicationController
 
   def update
     group = Group.find(params[:id])
-    # if group.users.each do |id|
-    #     id == current_user.id
-    #   end
         group.update(create_params)
         redirect_to :root
-    end
-  # end
+  end
 
   private
 
   def create_params
-    params.require(:group).permit(:name)
+    params.require(:group).permit(:name, user_ids: [])
   end
 end
