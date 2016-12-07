@@ -23,8 +23,13 @@ class GroupsController < ApplicationController
 
   def update
     group = Group.find(params[:id])
-        group.update(create_params)
-        redirect_to :root
+    if group.update(create_params)
+      flash[:notice] = "変更を登録しました"
+      redirect_to :root
+    else
+      flash[:alert] = "変更を登録できませんでした"
+      redirect_to edit_group_path
+    end
   end
 
   private
