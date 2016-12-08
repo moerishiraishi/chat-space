@@ -26,8 +26,7 @@ class GroupsController < ApplicationController
     if group.update(create_params)
       redirect_to :root, flash[:notice] = "変更を登録しました"
     else
-      flash[:alert] = "変更を登録できませんでした"
-      redirect_to edit_group_path
+      redirect_to edit_group_path, flash[:alert] = "変更を登録できませんでした"
   end
 
   private
