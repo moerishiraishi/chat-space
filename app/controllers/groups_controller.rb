@@ -25,6 +25,7 @@ class GroupsController < ApplicationController
       redirect_to :root, flash[:notice] = "変更を登録しました"
     else
       redirect_to edit_group_path, flash[:alert] = "変更を登録できませんでした"
+    end
   end
 
   private
