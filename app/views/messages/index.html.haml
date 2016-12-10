@@ -16,7 +16,7 @@
 
     .chat-body
       %ul.chat-messages
-        = render partial: "messages/message", collection: @messages
+        = render @messages
     .chat-footer
       = form_for [@group, @message] do |f|
         .chat-footer__body
