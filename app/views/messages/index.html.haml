@@ -1,0 +1,26 @@
+.layout-notification
+.chat
+  = render partial: 'groups/side_bar', locals: { groups: @groups}
+  .chat-main
+    .chat-header.clearfix
+      .chat-header--left
+        %h2
+        = @group.name
+        %p.chat-header__users
+          Members:
+          %span.chat-header__user moeri
+          %span.chat-header__user piyo
+          %span.chat-header__user namename
+      .chat-header--right
+        = link_to "Edit", edit_group_path(@group), class: 'chat-header__edit-btn'
+
+    .chat-body
+      %ul.chat-messages
+        = render @messages
+    .chat-footer
+      = form_for [@group, @message] do |f|
+        .chat-footer__body
+          = f.text_area :body, placeholder: 'type a message'
+          = f.label :image, class: 'chat-footer__file' do
+            %i.fa.fa-image
+        = f.submit 'Send'
