@@ -1,0 +1,8 @@
+%li.chat-message
+  .chat-message__header.clearfix
+    %p.chat-message_name
+      = message.user.name
+    %p.chat-message_time
+      = message.created_at
+  %p.chat-message_body
+    = message.body

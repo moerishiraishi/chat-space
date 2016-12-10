@@ -8,9 +8,4 @@
       = link_to edit_user_registration_path, class: 'chat-user__action' do
         %i.fa.fa-cog
   %ul.chat-groups
-  - groups.each do |group|
-    %li.chat-groups
-    = link_to group_messages_path(group), class: 'chat-group__link' do
-      %p.chat-group__name
-      = group.name
-    %p.chat-group__message
+  = render partial: "groups/group", collection: groups
