@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+
   def index
     @groups = Group.all
     @group = Group.find(params[:group_id])
@@ -19,11 +20,11 @@ class MessagesController < ApplicationController
     redirect_to group_messages_path
   end
 
-
   private
 
   def create_params
     params.require(:message).permit(:body, :image).merge(group_id: params[:group_id])
   end
+
 end
 
