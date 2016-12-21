@@ -13,6 +13,10 @@ class MessagesController < ApplicationController
   def create
     @message = current_user.messages.new(create_params)
     if @message.save
+      respond_to do |format|
+        format.any
+        format.json { render json: @message }
+      end
       flash[:notice] = "メッセージを送信しました"
     else
       flash[:alert] = "メッセージを送信できませんでした"
