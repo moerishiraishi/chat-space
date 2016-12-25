@@ -16,7 +16,12 @@ class MessagesController < ApplicationController
     if @message.save
       respond_to do |format|
         format.any
-        format.json { render json: { message: { name: @message.user.name, created_at: @message.created_at, body: @message.body } } }
+        format.json
+          { render json:
+            { message:
+              { name: @message.user.name,
+                created_at: @message.created_at,
+                body: @message.body }}}
       end
       flash[:notice] = "メッセージを送信しました"
     else
