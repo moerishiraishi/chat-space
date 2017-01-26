@@ -19,7 +19,7 @@ class GroupsController < ApplicationController
     end
   end
 
-  def edit_group_path
+  def edit
   end
 
   def update
