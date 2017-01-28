@@ -1,14 +1,11 @@
 $(function() {
-  function BuildHTML(data) {
-    $.each(data, function(i, user) {
+  function BuildHTML(user) {
       var html = '<div class="chat-group-user clearfix chat-group-user-add">' +
                    '<p class="chat-group-user__name">' + user.name + '</p>' +
                    '<a class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="' + user.id + '" data-user-name="' + user.name + '">追加' +
                    '</a>' +
                  '</div>';
-      $('#user-search-result').append(html);
-    })
-    return $('#user-search-result');
+      return html;
   }
 
   function AddUserHTML(id, name) {
@@ -22,42 +19,42 @@ $(function() {
   }
 
   $('#user-search-field').on('keyup', function() {
-    var textField = $('#inner_editor');
-    var text = textField.val()
     function ajaxSearch(text) {
       $.ajax({
         type: "GET",
         url: "/users/search",
         data: {
           user: {
-            name: text
+            text: $('#user-search-field').val()
           }
         },
         dataType: 'json'
       })
       .done(function(data) {
-        BuildHTML(data);
-        console.log(BuildHTML(data));
-
+        var insertHtml = ""
+        $.each(data, function(i, user) {
+          insertHtml += BuildHTML(user);
+        });
+        $('#user-search-result').html(insertHtml);
       })
       .fail(function() {
         alert('error');
       });
     };
-      // console.log("success");
     ajaxSearch();
+  });
 
-   $(document).on('click', '.chat-group-user__btn--add', function(){
-    $(this).parent().remove();
-    var id   = $(this).data('user-id');
+  $(document).on('click', '.chat-group-user__btn--add', function(){
+    var id = $(this).data('user-id');
     var name = $(this).data('user-name');
-    $('#chat-group-users').append(AdduserListHTML(id, name));
+    $(this).parent().remove();
+    var html = AddUserHTML(id, name)
+    $('#chat-group-users').append(html);
    });
 
    $(document).on('click', '.chat-group-user__btn--remove', function(){
     $(this).parent().remove();
    });
-  });
 });
 
 
