@@ -5,7 +5,7 @@ $(document).on('turbolinks:load', function() {
     var name = '<p class="chat-message_name">' + data.name + '</p>';
     var timestamps = '<p class="chat-message_time">' + data.created_at + '</p>';
     var header = $('<div class="chat-message__header clearfix">').append(name).append(timestamps);
-    var html = $('<li class="chat-message">').append(header).append(message).append(image);
+    var html = $('<li class="chat-message">').append(header, message, image);
     return html;
   }
 
