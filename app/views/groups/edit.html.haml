@@ -19,9 +19,6 @@
       .chat-group-form__field--right
         #chat-group-users
           .chat-group-user.clearfix
-            %p.chat-group-user__name
-            = f.collection_check_boxes(:user_ids, User.all, :id, :name) do |t|
-              = t.label { t.check_box + t.text }
     .chat-group-form__field.clearfix
       .chat-group-form__field--left
       .chat-group-form__field--right
