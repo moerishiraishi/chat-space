@@ -20,7 +20,8 @@ class MessagesController < ApplicationController
           { message:
             { name: @message.user.name,
               created_at: @message.created_at,
-              body: @message.body } } }
+              body: @message.body,
+              image: @message.image.url } } }
       end
       flash[:notice] = "メッセージを送信しました"
     else
