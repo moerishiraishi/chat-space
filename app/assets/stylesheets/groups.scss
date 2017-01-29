@@ -186,13 +186,16 @@
     position: absolute;
     top: 0;
     right: 0;
-    display: inline-block;
     width: 40px;
     height: 50px;
     line-height: 50px;
     text-align: center;
     cursor: pointer;
     right: 10px;
+
+    input {
+      display: none;
+    }
 
     i {
       display: inline-block;
@@ -223,7 +226,7 @@
     }
   }
 
-  input {
+  input[type=submit] {
     float: left;
     display: inline-block;
     width: 100px;
