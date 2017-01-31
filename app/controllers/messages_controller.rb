@@ -3,8 +3,12 @@ class MessagesController < ApplicationController
   def index
     @groups = Group.all
     @group = Group.find(params[:group_id])
-    @messages = @group.messages
+    @messages = @group.messages.includes(:user)
     @message = Message.new
+    respond_to do |format|
+      format.any
+      format.json { render json: @messages.map { |message| message.to_json } }
+    end
   end
 
   def new
