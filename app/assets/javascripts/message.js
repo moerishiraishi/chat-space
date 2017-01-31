@@ -63,7 +63,6 @@ $(document).on('turbolinks:load', function() {
         insertHtml += buildHTML(data[i]);
       };
       $('.chat-messages').html(insertHtml);
-      moveToBottom();
     })
     .fail(function() {
       alert('error');
