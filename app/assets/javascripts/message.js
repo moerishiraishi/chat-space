@@ -1,13 +1,28 @@
 $(document).on('turbolinks:load', function() {
+
+  var indexUrl = window.location.href + ".json";
+
   function buildHTML(data) {
-    var message = '<p class="chat-message_body">' + data.body + '</p>';
-    var image = '<img src=' + data.image + '>';
-    var name = '<p class="chat-message_name">' + data.name + '</p>';
-    var timestamps = '<p class="chat-message_time">' + data.created_at + '</p>';
-    var header = $('<div class="chat-message__header clearfix">').append(name).append(timestamps);
-    var html = $('<li class="chat-message">').append(header, message, image);
+    if (data.image) {
+      var image = '<img src=' + data.image + '>'
+    } else {
+      var image = ""
+    }
+    var html =  '<li class="chat-message">' +
+                  '<div class="chat-message__header clearfix">' +
+                    '<p class="chat-message_name">' + data.name + '</p>' +
+                    '<p class="chat-message_time">' + data.created_at + '</p>' +
+                  '</div>' +
+                  '<p class="chat-message_body">' + data.body + '</p>' + image +
+                '</li>';
     return html;
-  }
+  };
+
+  function moveToBottom() {
+    $('.chat-body').delay(100).animate({
+      scrollTop: $('.chat-messages').height() + $('.chat-message').height()
+    })
+  };
 
   $('#new_message').on('submit', function(e) {
     e.preventDefault();
@@ -22,9 +37,36 @@ $(document).on('turbolinks:load', function() {
     .done(function(data) {
       var html = buildHTML(data.message);
       $('.chat-messages').append(html);
+      $('#message_body').val("");
+      moveToBottom();
+    })
+    .fail(function() {
+      alert('error');
+    })
+    .always(function() {
+      return false
+    });
+  });
+
+// //現在のURLに該当したら自動更新
+  if (window.location.href.match(/messages/)) {
+    setInterval(function() {
+      $.ajax({
+        type: 'GET',
+        url: indexUrl,
+        dataType: 'json'
+    })
+    .done(function(data) {
+      var number = data.length;
+      var insertHtml =""
+      for (var i = 0; i < number; i++) {
+        insertHtml += buildHTML(data[i]);
+      };
+      $('.chat-messages').html(insertHtml);
     })
     .fail(function() {
       alert('error');
     });
-  });
+  },5000);
+  };
 });
